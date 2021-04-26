@@ -11,9 +11,9 @@ router.get('/signup', isLoggedOut,(req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  const { username, password, userEmail } = req.body;
+  const { username, password, useremail } = req.body;
 
-  if (!username || !password || !userEmail) {
+  if (!username || !password || !useremail) {
     res.render('signup', { errorMessage: 'Username, email and password are required.' })
   }
 
@@ -30,7 +30,7 @@ router.post('/signup', (req, res) => {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashPass = bcrypt.hashSync(password, salt);
 
-      User.create({ username, userEmail, password: hashPass })
+      User.create({ username, useremail, password: hashPass })
         .then((newUser) => {
           req.login(newUser, (error) => {
             if(error){
