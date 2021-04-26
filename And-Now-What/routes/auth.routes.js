@@ -11,9 +11,9 @@ router.get('/signup', isLoggedOut,(req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  const { username, password, useremail } = req.body;
+  const { username, password, mail } = req.body;
 
-  if (!username || !password || !useremail) {
+  if (!username || !password || !mail) {
     res.render('signup', { errorMessage: 'Username, email and password are required.' })
   }
 
@@ -30,13 +30,13 @@ router.post('/signup', (req, res) => {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashPass = bcrypt.hashSync(password, salt);
 
-      User.create({ username, useremail, password: hashPass })
+      User.create({ username, password: hashPass, mail })
         .then((newUser) => {
           req.login(newUser, (error) => {
             if(error){
               next(error)
             }
-            return res.redirect('/private/profile')
+            return res.redirect('/profile')
           })
         })
         .catch((error) => {
@@ -53,14 +53,14 @@ router.get('/login', isLoggedOut,(req, res) => {
 })
 
 router.post('/login', passport.authenticate("local", {
-  successRedirect: "/private/profile",
+  successRedirect: "/auth/profile",
   failureRedirect: "/auth/login",
   passReqToCallback: true
 }));
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('index');
 })
 
 module.exports = router;
