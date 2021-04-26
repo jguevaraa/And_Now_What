@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost:27017/and_now_what');
 
 const recipes = [
   {
+    
     title: "Xocai Healthy Chocolate Peanut Butter Bannana Dip",
     readyInMinutes: 45,
     servings: 1,

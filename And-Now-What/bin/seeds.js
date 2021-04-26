@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require('mongoose')
-const Ingredient = require('../models/ingredent.model')
+const Ingredient = require('../models/ingredient.model')
 
 mongoose.connect('mongodb://localhost:27017/and_now_what');
 
