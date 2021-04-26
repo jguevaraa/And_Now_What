@@ -11,14 +11,11 @@ router.get('/signup', isLoggedOut,(req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, userEmail } = req.body;
 
-  if (!username || !password) {
-    res.render('signup', { errorMessage: 'Username and password are required.' })
+  if (!username || !password || !userEmail) {
+    res.render('signup', { errorMessage: 'Username, email and password are required.' })
   }
-
-  // const regularExpresion = new RegExp('');
-  // regularExpresion.test(password)
 
   if(password.length < 3){
     res.render('signup', { errorMessage: 'Password should have at least 3 characters' })
@@ -33,9 +30,8 @@ router.post('/signup', (req, res) => {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashPass = bcrypt.hashSync(password, salt);
 
-      User.create({ username, password: hashPass })
+      User.create({ username, userEmail, password: hashPass })
         .then((newUser) => {
-          // return res.redirect('/');
           req.login(newUser, (error) => {
             if(error){
               next(error)
@@ -66,11 +62,5 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 })
-
-router.get("/slack", passport.authenticate('slack'));
-router.get("/slack/callback", passport.authenticate('slack', {
-  successRedirect: "/private/profile",
-  failureRedirect: "/auth/login"
-}))
 
 module.exports = router;
