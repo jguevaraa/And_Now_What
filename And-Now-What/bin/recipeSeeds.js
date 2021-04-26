@@ -2,7 +2,7 @@ require("dotenv").config();
 const mongoose = require('mongoose')
 const Recipe = require('../models/recipe.model')
 
-mongoose.connect('mongodb://localhost:27017/and_now_what');
+mongoose.connect('mongodb://localhost:27017/and-now-what');
 
 
 const recipes = [

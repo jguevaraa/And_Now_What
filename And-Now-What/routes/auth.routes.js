@@ -11,9 +11,9 @@ router.get('/signup', isLoggedOut,(req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  const { username, password, useremail } = req.body;
+  const { username, password, mail } = req.body;
 
-  if (!username || !password || !useremail) {
+  if (!username || !password || !mail) {
     res.render('signup', { errorMessage: 'Username, email and password are required.' })
   }
 
@@ -30,7 +30,7 @@ router.post('/signup', (req, res) => {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashPass = bcrypt.hashSync(password, salt);
 
-      User.create({ username, useremail, password: hashPass })
+      User.create({ username, password: hashPass, mail })
         .then((newUser) => {
           req.login(newUser, (error) => {
             if(error){
@@ -62,5 +62,9 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 })
+
+router.get('/profile', (req, res, next) => {
+  res.render('profile', {user: req.user});
+});
 
 module.exports = router;

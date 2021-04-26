@@ -12,7 +12,6 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Passport auth</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,9 +19,13 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
-          <a class="nav-link" href="/auth/signup">Signup</a>
-          <a class="nav-link" href="/auth/login">Login</a>
-          <a class="nav-link" href="/auth/logout">Logout</a>
+          {{#if user}}
+            <a class="nav-link" href="/private/profile">profile</a>
+            <a class="nav-link" href="/auth/logout">Logout</a>
+            {{else}}
+              <a class="nav-link" href="/auth/signup">Signup</a>
+              <a class="nav-link" href="/auth/login">Login</a>
+          {{/if}}
         </div>
       </div>
     </div>
