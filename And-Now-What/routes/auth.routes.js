@@ -36,7 +36,7 @@ router.post('/signup', (req, res) => {
             if(error){
               next(error)
             }
-            return res.redirect('/profile')
+            return res.redirect('/private/profile')
           })
         })
         .catch((error) => {
@@ -53,14 +53,18 @@ router.get('/login', isLoggedOut,(req, res) => {
 })
 
 router.post('/login', passport.authenticate("local", {
-  successRedirect: "/auth/profile",
+  successRedirect: "/private/profile",
   failureRedirect: "/auth/login",
   passReqToCallback: true
 }));
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('index');
+  res.redirect('/');
 })
+
+router.get('/profile', (req, res, next) => {
+  res.render('profile', {user: req.user});
+});
 
 module.exports = router;
