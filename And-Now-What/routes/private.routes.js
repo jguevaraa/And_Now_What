@@ -14,9 +14,9 @@ router.post('/profile', (req, res, next) => {
 })
 
 
-router.get('/recipe/create', (req, res, next) => {
-  res.render('create-form');
-});
+// router.get('/recipe/create', (req, res, next) => {
+//   res.render('create-form');
+// });
 
 // router.get('/recipe/create', passport.authenticate("local", {
 //   successRedirect: "/recipe/create",
@@ -24,14 +24,14 @@ router.get('/recipe/create', (req, res, next) => {
 //   passReqToCallback: true
 // }));
 
-router.post('/recipe/create', (req, res, next) => {
-  const { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} = req.body;
-  Recipe.create( { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} )
-  .then(() => {
-    res.redirect('/recipes');
-  })
-  .catch(error => res.render('/create-form', { error }));
-});
+// router.post('/recipe/create', (req, res, next) => {
+//   const { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} = req.body;
+//   Recipe.create( { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} )
+//   .then(() => {
+//     res.redirect('/recipes');
+//   })
+//   .catch(error => res.render('/create-form', { error }));
+// });
 
 
 router.get('/recipes/:id/edit', (req, res, next) => {
