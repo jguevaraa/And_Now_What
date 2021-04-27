@@ -14,11 +14,6 @@ router.post('/profile', (req, res, next) => {
   res.render('profile', { user: req.user });
 })
 
-
-// router.get('/recipes/create', (req, res, next) => {
-//   res.render('create-form');
-// });
-
 router.get('/recipes/create', isLoggedIn, (req, res) => {
 res.render("create-form")
 });

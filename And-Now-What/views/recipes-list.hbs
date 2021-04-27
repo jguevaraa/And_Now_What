@@ -1,23 +1,22 @@
 <h2>Recipes</h2>
-<a href="/private/recipes/create">Add new recipe</a>
+<a href="/private/recipes/create">Share your delicius creations</a>
 <div>
     {{#each recipes}}
     <div>
-         <p>title: {{ title }}</p>
-            <p>ingredent: {{ ingredent }}</p>
-            <p>cuisines: {{ cuisines }}</p>
-            <p>dishType: {{ dishType }}</p>
-            <p>readyInMinutes: {{ readyInMinutes }}</p>
-            <p>author: {{ author }}</p>
-            <p>image: {{ image }}</p>
-            <p>summary: {{ summary }}</p>
-            <div>
-                <a href="/private/recipes/{{id}}/edit">Edit</a>
-                <form action="/private/recipes/{{id}}/delete" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
+        <p>title: {{ title }}</p>
+        <p>ingredent: {{ ingredent }}</p>
+        <p>cuisines: {{ cuisines }}</p>
+        <p>dishType: {{ dishType }}</p>
+        <p>readyInMinutes: {{ readyInMinutes }}</p>
+        <p>author: {{ author }}</p>
+        <p>image: {{ image }}</p>
+        <p>summary: {{ summary }}</p>
+        <div>
+            <a href="/private/recipes/{{id}}/edit">Edit</a>
+            <form action="/private/recipes/{{id}}/delete" method="POST">
+                <button type="submit">Delete</button>
+            </form>
         </div>
     </div>
     {{/each}}
-    
 </div>

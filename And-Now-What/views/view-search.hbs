@@ -1,0 +1,12 @@
+<h2>Recipes</h2>
+<a href="/private/recipes/create">Add new recipe</a>
+<a href="/private/recipes/search">Search for more recipies</a>
+<div>
+    {{#each data}}
+    <div>
+        <p>Title: {{ title }}</p>
+        <p>Image: {{ image }}</p>
+        <p>Like: {{ like }}</p>
+    </div>
+    {{/each}}
+</div>

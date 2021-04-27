@@ -1,31 +1,31 @@
 <h2>Update the recipe</h2>
 <form action="/private/recipes/{{id}}/edit" method="POST">
-    <label for="title">title:</label>
+    <label for="title">Title:</label>
     <input type="text" name="title" value="{{title}}" required>
 
-    <label for="ingredent">ingredent:</label>
+    <label for="ingredent">Ingredent:</label>
     <input type="text" name="ingredent" value="{{ingredent}}" required>
 
-    <label for="cuisines">cuisines:</label>
+    <label for="cuisines">Cuisines:</label>
     <input type="text" name="cuisines" value="{{cuisines}}" required>
 
-    <label for="dishType">dishType:</label>
+    <label for="dishType">DishType:</label>
     <input type="text" name="dishType" value="{{dishType}}" required>
 
-    <label for="readyInMinutes">readyInMinutes:</label>
+    <label for="readyInMinutes">How long it takes:</label>
     <input type="number" name="readyInMinutes" min="0" value="{{readyInMinutes}}" required>
 
-    <label for="author">author:</label>
+    <label for="author">Author:</label>
     <input type="text" name="author" value="{{author}}" required>
 
      
-    <label for="image">image:</label>
+    <label for="image">Image:</label>
     <input type="text" name="image" value="{{image}}" required>
 
-    <label for="summary">summary:</label>
+    <label for="summary">Summary:</label>
     <input type="text" name="summary" value="{{summary}}" required>
 
-    <button type="submit">Edit</button>
+    <button type="submit">Update</button>
 </form>
 
 {{#if error}}
