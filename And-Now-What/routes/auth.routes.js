@@ -21,7 +21,7 @@ router.post('/signup', (req, res) => {
     res.render('signup', { errorMessage: 'Password should have at least 3 characters' })
   }
 
-  User.findOne({ $or: [{ username }, { useremail }]})
+  User.findOne({ $or: [{ username }, { mail }]})
     .then(user => {
       if (user) {
         return res.render('signup', { errorMessage: 'User already exists.' })

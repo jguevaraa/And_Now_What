@@ -1,0 +1,32 @@
+<h2>Create a new recipes</h2>
+<form action="/private/recipe/create" method="POST">
+    <label for="title">title:</label>
+    <input type="text" name="title" required>
+    
+    <label for="ingredent">ingredent:</label>
+    <input type="text" name="ingredent" required>    
+
+    <label for="cuisines">cuisines:</label>
+    <input type="text" name="cuisines" required>
+
+    <label for="dishType">dishType:</label>
+    <input type="text" name="dishType" required>
+
+    <label for="readyInMinutes">readyInMinutes:</label>
+    <input type="number" name="readyInMinutes" min="0" required>
+
+    <label for="author">author:</label>
+    <input type="text" name="author" required>
+
+    <label for="image">image:</label>
+    <input type="text" name="image" required>
+
+    <label for="summary">summary:</label>
+    <input type="text" name="summary" required>
+
+    <button type="submit">Create</button>
+</form>
+
+{{#if error}}
+<p>{{error}}</p>
+{{/if}}
