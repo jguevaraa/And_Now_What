@@ -27,7 +27,6 @@ router.post('/recipes/create', (req, res, next) => {
   .catch(error => res.render('create-form', { error }));
 });
 
-
 router.get('/recipes/:id/edit', (req, res, next) => {
   const { id } = req.params;
   Recipe.findById(id)
@@ -50,25 +49,4 @@ router.post('/recipes/:id/delete', (req, res, next) => {
   .catch(error => next(error));
 });
 
-
-
-// ------------------------------------------------------------------------------
-
-router.get('/recipes/:id/recipe', (req, res, next) => {
-  const { id } = req.params;
-  Recipe.findById(id)
-.then( recipes => res.render('single-recipe', recipes))
-.catch( error => next(error));  
-});
-
-router.post('/recipes/:id/recipe', (req, res, next) => {
-  const { id } = req.params;
-  const { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} = req.body;
-  .then( recipes => res.render('single-recipe', recipes))
-  .catch( error => next(error));  
-  });
-
 module.exports = router;
-
-
-https://api.spoonacular.com/recipes/655235/information?apiKey=fca5115684f049309c7a9cf8dd175018

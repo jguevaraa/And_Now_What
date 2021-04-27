@@ -5,7 +5,8 @@
     {{#each data}}
     <div>
         <p>Title: {{ title }}</p>
-        <form action="/private/recipes/{{id}}/view-recipe" method="POST">
+        <p>{{ id }}</p>
+        <form action="/private/recipes/view-recipe" method="POST">
             <button type="submit">Check this out</button>
         </form>
         <p>Image: <img src={{ image }} alt="food"></p>

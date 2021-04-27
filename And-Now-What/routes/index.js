@@ -35,4 +35,20 @@ router.post("/search", (req, res, next) => {
   .catch( error => console.error(error) )
 })
 
+router.get('/private/recipes/:id/', (req, res) => {
+  res.render('view-search')
+})
+
+router.post("/search", (req, res, next) => {
+  let { id } = req.body
+  axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.API_KEY}`)
+  .then( response => {
+    const data = responde.data
+    res.render('single-recipe', { data })
+  })
+  .catch( error =>  {
+    console.log(error)
+  })
+})
+
 module.exports = router;
