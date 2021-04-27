@@ -5,8 +5,11 @@
     {{#each data}}
     <div>
         <p>Title: {{ title }}</p>
-        <p>Image: {{ image }}</p>
-        <p>Like: {{ like }}</p>
+        <form action="/private/recipes/{{id}}/view-recipe" method="POST">
+            <button type="submit">Check this out</button>
+        </form>
+        <p>Image: <img src={{ image }} alt="food"></p>
+        <p>Like: {{ likes }}</p>
     </div>
     {{/each}}
 </div>

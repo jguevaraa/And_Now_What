@@ -1,0 +1,16 @@
+<h2>{{ recipe.title }}</h2>
+<a href="/private/recipes/create">Add new recipe</a>
+<a href="/private/recipes/search">Search for more recipies</a>
+<div>
+    <div>
+        <p>Title: {{ title }}</p>
+        <p>Ingredients: {{ ingredient }}</p>
+        <p>Cuisines: {{ cuisines }}</p>
+        <p>Dish Type: {{ dishType }}</p>
+        <p>How long it takes: {{ readyInMinutes }}</p>
+        <p>Chef: {{ author }}</p>
+        <p>Instructios: {{ instructions }}</p>
+        <p>Image: <img src={{ image }} alt="food"></p>
+        <p>Summary: {{ summary }}</p>
+    </div>
+</div>

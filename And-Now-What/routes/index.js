@@ -26,7 +26,7 @@ router.get('/private/recipes/search', (req, res) => {
 
 router.post("/search", (req, res, next) => {
   let {ingredient} = req.body
-  axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.API_KEY}&ingredients=${ingredient}&number=4`)
+  axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.API_KEY}&ingredients=${ingredient}&number=10`)
   .then( response => {
     const data = response.data;
 
