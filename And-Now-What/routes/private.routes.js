@@ -55,4 +55,11 @@ router.post('/recipes/:id/edit', (req, res, next) => {
   .catch(error => res.render('update-form', { error }));
 });
 
+router.post('/recipes/:id/delete', (req, res, next) => {
+  const { id } = req.params;
+  Recipe.findByIdAndDelete(id)
+  .then(() => res.redirect('/recipes'))
+  .catch(error => next(error));
+});
+
 module.exports = router;
