@@ -14,7 +14,7 @@ router.post('/profile', (req, res, next) => {
 })
 
 
-router.get('/recipe/create', (req, res, next) => {
+router.get('/recipes/create', (req, res, next) => {
   res.render('create-form');
 });
 
@@ -24,25 +24,19 @@ router.get('/recipe/create', (req, res, next) => {
 //   passReqToCallback: true
 // }));
 
-router.post('/recipe/create', (req, res, next) => {
+router.post('/recipes/create', (req, res, next) => {
   const { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} = req.body;
   Recipe.create( { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} )
   .then(() => {
     res.redirect('/recipes');
   })
-  .catch(error => res.render('/create-form', { error }));
+  .catch(error => res.render('create-form', { error }));
 });
 
 
 router.get('/recipes/:id/edit', (req, res, next) => {
   const { id } = req.params;
   Recipe.findById(id)
-//   .then( () => {
-//     res.render('update-form');
-//   })
-//   .catch( error => next(error));  
-// });
-
 .then( recipes => res.render('update-form', recipes))
 .catch( error => next(error));  
 });
@@ -50,7 +44,7 @@ router.get('/recipes/:id/edit', (req, res, next) => {
 router.post('/recipes/:id/edit', (req, res, next) => {
   const { id } = req.params;
   const { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} = req.body;
-  Recipe.findByIdAndUpdate(id, { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary })
+  Recipe.findByIdAndUpdate( id, { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary }, { new: true })
   .then(() => res.redirect('/recipes'))
   .catch(error => res.render('update-form', { error }));
 });
