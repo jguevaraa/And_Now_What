@@ -1,5 +1,6 @@
 const express = require('express');
 const { isLoggedIn } = require('../middlewares');
+
 const User = require('../models/User.model');
 const Recipe = require('../models/recipe.model');
 const router = express.Router();
@@ -14,15 +15,13 @@ router.post('/profile', (req, res, next) => {
 })
 
 
-router.get('/recipes/create', (req, res, next) => {
-  res.render('create-form');
-});
+// router.get('/recipes/create', (req, res, next) => {
+//   res.render('create-form');
+// });
 
-// router.get('/recipe/create', passport.authenticate("local", {
-//   successRedirect: "/recipe/create",
-//   failureRedirect: "/auth/login",
-//   passReqToCallback: true
-// }));
+router.get('/recipes/create', isLoggedIn, (req, res) => {
+res.render("create-form")
+});
 
 router.post('/recipes/create', (req, res, next) => {
   const { title, ingredent, cuisines, dishType, readyInMinutes, author, image, summary} = req.body;
